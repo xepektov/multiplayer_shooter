@@ -1,0 +1,139 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class move_stick : MonoBehaviour
+{
+
+    public FixedJoystick moveJoystick;
+    public FixedJoystick rotateJoystick;
+
+    public Rigidbody myrigidbody;
+    public float xvelocity, zvelocity, speed;
+    public Vector3 player_velocity;
+
+    public float force_value;
+    float force_multiplier_a, force_multiplier_w, force_multiplier_s, force_multiplier_d;
+    public float braking_force_multiplier, default_force_multiplier;
+    Quaternion current_rotation;
+
+    private void Awake()
+    {
+        this.gameObject.GetComponent<health_script>().object_type = health_script.object_type_list.shooter;
+    }
+
+
+    // Start is called before the first frame update
+    void Start()
+    {
+        this.transform.rotation = Quaternion.Euler(-90,0,0);
+        current_rotation = this.transform.rotation;
+
+        myrigidbody = this.gameObject.GetComponent<Rigidbody>();
+        xvelocity = myrigidbody.velocity.x;
+        zvelocity = myrigidbody.velocity.z;
+        speed = Mathf.Sqrt(Mathf.Pow(xvelocity, 2) + Mathf.Pow(zvelocity, 2));
+        default_force_multiplier = 1f;
+        braking_force_multiplier = 2f;
+
+        //myrigidbody.velocity = new Vector3(0f, 0f, 0f);
+        //force_value =5;
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        if((rotateJoystick.Horizontal!=0)||(rotateJoystick.Vertical!=0)){
+            UpdateRotateJoystick();
+        }
+        else
+        {
+            transform.rotation = current_rotation;
+
+        }
+
+        UpdateMoveJoystick();
+        
+    }
+
+    void UpdateMoveJoystick()
+    {
+        float hoz = -moveJoystick.Horizontal;
+
+        float ver = -moveJoystick.Vertical;
+
+        Vector3 direction = new Vector3(hoz,0, ver).normalized;
+
+        //transform.Translate(direction * 0.07f, Space.World);
+
+        if (hoz>0)
+        {
+            if (Vector3.Dot(new Vector3(1, 0, 0), myrigidbody.velocity) < 0)
+            {
+                force_multiplier_a = braking_force_multiplier;
+            }
+            else
+            {
+                force_multiplier_a = default_force_multiplier;
+            }
+            myrigidbody.AddForce(force_value * force_multiplier_a, 0, 0);
+        }
+
+        else if (hoz < 0)
+        {
+            if (Vector3.Dot(new Vector3(-1, 0, 0), myrigidbody.velocity) < 0)
+            {
+                force_multiplier_d = braking_force_multiplier;
+            }
+            else
+            {
+                force_multiplier_d = default_force_multiplier;
+            }
+            myrigidbody.AddForce(-1 * force_value * force_multiplier_d, 0, 0);
+        }
+
+        if (ver > 0)
+        {
+            if (Vector3.Dot(new Vector3(0, 0, 1), myrigidbody.velocity) < 0)
+            {
+                force_multiplier_w = braking_force_multiplier;
+            }
+            else
+            {
+                force_multiplier_w = default_force_multiplier;
+            }
+            myrigidbody.AddForce(0, 0,1 * force_value * force_multiplier_w);
+        }
+
+        else if (ver < 0)
+        {
+            if (Vector3.Dot(new Vector3(0, 0, -1), myrigidbody.velocity) < 0)
+            {
+                force_multiplier_s = braking_force_multiplier;
+            }
+            else
+            {
+                force_multiplier_s = default_force_multiplier;
+            }
+            myrigidbody.AddForce(0, 0, -1 * force_value * force_multiplier_s);
+        }
+
+        //print(hoz);
+        //print(ver);
+    }
+
+    void UpdateRotateJoystick()
+    {
+        float hoz = -rotateJoystick.Horizontal;
+        float ver = rotateJoystick.Vertical;
+
+        Vector3 direction = new Vector3(hoz, ver, 0).normalized;
+
+        float rotation_z = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+        transform.rotation = Quaternion.Euler(-90f, 0f, rotation_z - 90);
+        current_rotation = transform.rotation;
+
+    }
+
+    
+}

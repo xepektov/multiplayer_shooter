@@ -1,0 +1,102 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &8090898221653752541
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8090898221653752542}
+  - component: {fileID: 8090898221653752543}
+  - component: {fileID: 8090898221653752536}
+  m_Layer: 0
+  m_Name: Level_Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8090898221653752542
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8090898221653752541}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 9.511787, y: 16.6954, z: 4.680496}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 1
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8090898221653752543
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8090898221653752541}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 350fc0d2147a41c41a8b02e66fe686b8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shooter: {fileID: 0}
+  hitpoint_shooter: 150
+  hitpoint_ball_spawner: 200
+  hitpoint_gunner: 100
+  hitpoint_mortar: 400
+  damage_mgbullet: 10
+  damage_mgbullet_player: 10
+  damage_ball: 20
+  damage_grenade: 50
+  damage_rate_lazer: 15
+  damage_rate_player_lazer: 20
+  damage_blueball: 110
+  damage_mortar: 50
+  ball_interval: 0
+  gunner_shoot_dur: 0
+  gunner_shoot_no: 0
+  gunner_shoot_interval: 0
+  mgbullet: {fileID: 5913845578888858902, guid: 9eb0c72c4f32a7a4e8d048a81dc90c91, type: 3}
+  mgbullet_player: {fileID: 5913845578888858902, guid: 811447e85f04e3b45b2c722e77f458bc, type: 3}
+  ball: {fileID: 4209061882179120594, guid: 779156b4e49843f4e92359f7288b8f09, type: 3}
+  grenade: {fileID: 404482104758661000, guid: 762b11edaceeba040945086912f0f81c, type: 3}
+  lazer: {fileID: 0}
+  player_lazer: {fileID: 0}
+  health_powerup_value: 50
+  crystal_number: 5
+  shield_duration: 30
+--- !u!114 &8090898221653752536
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8090898221653752541}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 802dd838f6a4164438749e6344657509, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  powerup_count: 0
+  max_powerup_count: 6
+  powerup_transform_array:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  powerup_bool_list: 
+  powerup_spawn:
+  - {fileID: 1950739594534619340, guid: 6db5430dd0b65d849bb9d1ed1bb7ce63, type: 3}
+  - {fileID: 1064662406993394456, guid: b94875c416f34674cac1e57080546022, type: 3}
+  - {fileID: 6708341637703470358, guid: 68f1c895918350b43bc4231395799aa4, type: 3}
+  - {fileID: 8118470796740457211, guid: 089de64c65aae7740a7328a6c44d30bc, type: 3}

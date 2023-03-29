@@ -1,0 +1,19 @@
+UI disabled - 
+crystal text(player_stats)
+shield_bar (shield drag script)
+
+maincam cinamachine disabled
+virtual camera component disabled in enviornment
+
+removed joystick machine gun script from shooter
+shoooter manager script for joystickt disabled in  shooter-> shootermanager
+
+deletion of duplicate camera in player rotation script
+
+script for dying and respawning in playerManager script and health script
+
+removed camera controller
+
+bullet fixed speed,not able to destroy bullet
+
+
